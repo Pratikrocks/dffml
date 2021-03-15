@@ -289,6 +289,10 @@ function run_lines() {
   "${PYTHON}" ./scripts/check_literalincludes.py
 }
 
+function run_commitMessage() {
+  "${PYTHON}" ./scripts/check_literalincludes.py
+}
+
 function run_container() {
   docker build --build-arg DFFML_RELEASE=master -t intelotc/dffml .
   docker run --rm intelotc/dffml version
@@ -317,6 +321,8 @@ elif [ "x${1}" == "xdocs" ]; then
   run_docs
 elif [ "x${1}" == "xlines" ]; then
   run_lines
+elif [ "x${1}" == "xcommitMessage" ]; then
+  run_commitMessage
 elif [ "x${1}" == "xcontainer" ]; then
   run_container
 elif [ "x${1}" == "xconsoletest" ]; then
