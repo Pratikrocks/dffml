@@ -1039,6 +1039,12 @@ class PinDeps(CMD):
                     )
                 )
 
+class CommitMessage(CMD):
+    def __init__(self):
+        self.CommitMessage = []
+    def getCommitTitle(self):
+        pass
+
 
 class CI(CMD):
     """

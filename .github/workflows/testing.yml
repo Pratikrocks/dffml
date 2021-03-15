@@ -30,7 +30,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Check commit message
       run: |
-        python --version
+        git log --online
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
