@@ -7,7 +7,7 @@ on:
   - cron:  '0 3 * * *'
 
 jobs:
-  lint:
+  lintr:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
