@@ -465,33 +465,33 @@ class VersionNotFoundError(Exception):
     """
 
 
-# @configdataclass
-# class SetupPyVersionConfig:
-#     versionfilepath: str = field("Path to version.py")
+@configdataclass
+class SetupPyVersionConfig:
+    versionfilepath: str = field("Path to version.py")
 
 
-# class SetupPyVersion(CMD):
-#     """
-#     Read a version.py file that would be referenced by a setup.py or setup.cfg.
-#     The version.py file contains the version of the package in the VERSION
-#     variable.
-#     """
+class SetupPyVersion(CMD):
+    """
+    Read a version.py file that would be referenced by a setup.py or setup.cfg.
+    The version.py file contains the version of the package in the VERSION
+    variable.
+    """
 
-#     CONFIG = SetupPyVersionConfig
+    CONFIG = SetupPyVersionConfig
 
-#     def parse_version(self, filename: str):
-#         self.logger.debug("Checking for VERSION in file %r", filename)
-#         with open(filename, "r") as f:
-#             for line in f:
-#                 self.logger.debug("Checking for VERSION in line %r", line)
-#                 if line.startswith("VERSION"):
-#                     return ast.literal_eval(
-#                         line.strip().split("=")[-1].strip()
-#                     )
-#         raise VersionNotFoundError(self.versionfilepath)
+    def parse_version(self, filename: str):
+        self.logger.debug("Checking for VERSION in file %r", filename)
+        with open(filename, "r") as f:
+            for line in f:
+                self.logger.debug("Checking for VERSION in line %r", line)
+                if line.startswith("VERSION"):
+                    return ast.literal_eval(
+                        line.strip().split("=")[-1].strip()
+                    )
+        raise VersionNotFoundError(self.versionfilepath)
 
-#     async def run(self):
-#         print(self.parse_version(self.versionfilepath))
+    async def run(self):
+        print(self.parse_version(self.versionfilepath))
 
 
 # Instance of parse_version method as function for logging
